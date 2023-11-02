@@ -8,30 +8,31 @@ let user = {
     height: prompt('Height'),
     highestAcadamicQualification: prompt('Highest Academic Qualification'),
     identificationNumber: prompt('Identification Number'),
-    ageClassification: prompt('Age Classification')
-};
+    age: prompt('Enter Age'),
+}
+
+
+if(user.age >=0 && user.age <= 7) {
+    user.ageClassification = ('toddler');
+} 
+else if(user.age >= 8 && user.age <= 12){
+    user.ageClassification = ("adolescent");
+} 
+else if (user.age >= 13 && user.age <= 19){
+    user.ageClassification = ("teenager");
+} 
+else if (user.age >= 20 && user.age <= 25){
+    user.ageClassification = ("baby adult");
+} 
+else if (user.age >= 26 && user.age <= 35){
+    user.ageClassification = ("adult");
+} 
+else if (user.age >= 36 && user.age <= 55){
+    user.ageClassification = ("midlife crisis");
+}  
+else{
+    user.ageClassification = ("ancestor");
+}
+
 console.log(user);
 
-ageClassification = 56
-
-if (user.ageClassification <= 7) {
-    console.log("toddler");
-}
-else if (user.ageClassification >= 8 && user.ageClassification <= 12) {
-    console.log("adolescent");
-}
-else if (user.ageClassification >= 13 && user.ageClassification <= 19) {
-    console.log("teenager");
-}
-else if (user.ageClassification >= 20 && user.ageClassification <= 25) {
-    console.log("baby adult");
-}
-else if (user.ageClassification >= 26 && user.ageClassification <= 35) {
-    console.log("adult");
-}
-else if (user.ageClassification >= 36 && user.ageClassification <= 55) {
-    console.log("midlife crisis");
-}
-else {
-    console.log("ancestor");
-}
