@@ -78,19 +78,19 @@ else {
 
 let mathematicsUnit = courses.mathematics;
 
-if(courses.english === "A") {
+if(courses.mathematics === "A") {
     mathematicsUnit = courseUnits.mathematics * gradePoints.A;
 }
-else if(courses.english === "B") {
+else if(courses.mathematics === "B") {
     mathematicsUnit = courseUnits.mathematics * gradePoints.B;
 }
-else if(courses.english === "C") {
+else if(courses.mathematics === "C") {
     mathematicsUnit = courseUnits.mathematics * gradePoints.C;
 }
-else if(courses.english === "D") {
+else if(courses.mathematics === "D") {
     mathematicsUnit = courseUnits.mathematics * gradePoints.D;
 }
-else if(courses.english === "E") {
+else if(courses.mathematics === "E") {
     mathematicsUnit = courseUnits.mathematics * gradePoints.E;
 }
 else {
