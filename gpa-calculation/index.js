@@ -1,14 +1,14 @@
 const courses = {}
 
-courses.english = prompt('Enter English Grade');
-courses.french = prompt('Enter French Grade');
-courses.mathematics = prompt('Enter Mathematics Grade');
-courses.physics = prompt('Enter Physics Grade');
-courses.chemistry = prompt('Enter Chemistry Grade');
-courses.biology = prompt('Enter Biology Grade');
-courses.workshop = prompt('Enter Workshop Grade');
-courses.technicalDrawing = prompt('Enter Technical Drawing Grade');
-courses.humanities = prompt('Enter Humanities Grade');
+courses.english = fetchUserGrade("English");
+courses.french = fetchUserGrade("French");
+courses.mathematics = fetchUserGrade("Mathematics");
+courses.physics = fetchUserGrade("Physic");
+courses.chemistry = fetchUserGrade("Chemistry");
+courses.biology = fetchUserGrade("Biology");
+courses.workshop = fetchUserGrade("Workshop");
+courses.technicalDrawing = fetchUserGrade("Technical Drawing");
+courses.humanities = fetchUserGrade("Humanities");
 
 const courseUnits = {
     english: 2,
@@ -32,200 +32,62 @@ const gradePoints = {
 }
 
 const totalUnit = 21;
+const englishUnit = computeGradeScore(courses.english, courseUnits.english);
+const frenchUnit = computeGradeScore(courses.french, courseUnits.french);
+const mathematicsUnit = computeGradeScore(courses.mathematics, courseUnits.mathematics);
+const physicsUnit = computeGradeScore(courses.physics, courseUnits.physics);
+const chemistryUnit = computeGradeScore(courses.chemistry, courseUnits.chemistry);
+const biologyUnit = computeGradeScore(courses.biology, courseUnits.biology);
+const workshopUnit = computeGradeScore(courses.workshop, courseUnits.workshop);
+const technicalDrawingUnit = computeGradeScore(courses.technicalDrawing, courseUnits.technicalDrawing);
+const humanitiesUnit = computeGradeScore(courses.humanities, courseUnits.humanities);
 
-let englishUnit = courses.english;
+function computeGradeScore (grade, units){
+    let score;
+    if(grade ==='A'){
+        score = 5 * units;
+    }
+    else if(grade ==='B'){
+        score = 4 * units;
+    }
+    else if(grade ==='C'){
+        score = 3 * units;
+    }
+    else if(grade ==='D'){
+        score = 2 * units;
+    }
+    else if(grade ==='E'){
+        score = 1 * units;
+    }
+    else{
+        score = 0;
+    }
 
-if (courses.english === "A") {
-    englishUnit = courseUnits.english * gradePoints.A;
-}
-else if (courses.english === "B") {
-    englishUnit = courseUnits.english * gradePoints.B;
-}
-else if (courses.english === "C") {
-    englishUnit = courseUnits.english * gradePoints.C;
-}
-else if (courses.english === "D") {
-    englishUnit = courseUnits.english * gradePoints.D;
-}
-else if (courses.english === "E") {
-    englishUnit = courseUnits.english * gradePoints.E;
-}
-else {
-    englishUnit = courseUnits.english * gradePoints.F;
-}
+    return score;
+ }
 
+function fetchUserGrade(courses){
+    let promptMessage = ("what was your grade") + courses;
+    let grade = prompt(promptMessage);
 
-let frenchUnit = courses.french;
-
-if (courses.french === "A") {
-    frenchUnit = courseUnits.french * gradePoints.A;
-}
-else if (courses.french === "B") {
-    frenchUnit = courseUnits.french * gradePoints.B;
-}
-else if (courses.french === "C") {
-    frenchUnit = courseUnits.french * gradePoints.C;
-}
-else if (courses.french === "D") {
-    frenchUnit = courseUnits.french * gradePoints.D;
-}
-else if (courses.french === "E") {
-    frenchUnit = courseUnits.french * gradePoints.E;
-}
-else {
-    frenchUnit = courseUnits.french * gradePoints.F;
-}
-
-let mathematicsUnit = courses.mathematics;
-
-if(courses.mathematics === "A") {
-    mathematicsUnit = courseUnits.mathematics * gradePoints.A;
-}
-else if(courses.mathematics === "B") {
-    mathematicsUnit = courseUnits.mathematics * gradePoints.B;
-}
-else if(courses.mathematics === "C") {
-    mathematicsUnit = courseUnits.mathematics * gradePoints.C;
-}
-else if(courses.mathematics === "D") {
-    mathematicsUnit = courseUnits.mathematics * gradePoints.D;
-}
-else if(courses.mathematics === "E") {
-    mathematicsUnit = courseUnits.mathematics * gradePoints.E;
-}
-else {
-    mathematicsUnit = courseUnits.mathematics * gradePoints.F;
+    while (!isValid(grade)) {
+        promptMessage = "Incorrect value. Please type in your grade in" + courses;
+        grade = prompt(promptMessage);
+    }
+    return grade;
 }
 
-let physicsUnit = courses.physics;
-
-if(courses.physics === "A") {
-    physicsUnit = courseUnits.physics * gradePoints.A;
+function isValid(grade){
+let validate = grade === 'A' ||
+               grade === 'B' ||
+               grade === 'C' ||
+               grade === 'D' ||
+               grade === 'E' ||
+               grade === 'F';
+    return validate
 }
-else if(courses.physics === "B") {
-    physicsUnit = courseUnits.physics * gradePoints.B;
-}
-else if(courses.physics === "C") {
-    physicsUnit = courseUnits.physics * gradePoints.C;
-}
-else if(courses.physics === "D") {
-    physicsUnit = courseUnits.physics * gradePoints.D;
-}
-else if(courses.physics === "E") {
-    physicsUnit = courseUnits.physics * gradePoints.E;
-}
-else {
-    physicsUnit = courseUnits.physics * gradePoints.F;
-}
-
-let chemistryUnit = courses.chemistry;
-
-if(courses.chemistry === "A") {
-    chemistryUnit = courseUnits.chemistry * gradePoints.A;
-}
-else if(courses.chemistry === "B") {
-    chemistryUnit = courseUnits.chemistry * gradePoints.B;
-}
-else if(courses.chemistry === "C") {
-    chemistryUnit = courseUnits.chemistry * gradePoints.C;
-}
-else if(courses.chemistry === "D") {
-    chemistryUnit = courseUnits.chemistry * gradePoints.D;
-}
-else if(courses.chemistry === "E") {
-    chemistryUnit = courseUnits.chemistry * gradePoints.E;
-}
-else {
-    chemistryUnit = courseUnits.chemistry * gradePoints.F;
-}
-
-let biologyUnit = courses.biology;
-
-if(courses.biology === "A") {
-    biologyUnit = courseUnits.biology * gradePoints.A;
-}
-else if(courses.biology === "B") {
-    biologyUnit = courseUnits.biology * gradePoints.B;
-}
-else if(courses.biology === "C") {
-    biologyUnit = courseUnits.biology * gradePoints.C;
-}
-else if(courses.biology === "D") {
-    biologyUnit = courseUnits.biology * gradePoints.D;
-}
-else if(courses.biology === "E") {
-    biologyUnit = courseUnits.biology * gradePoints.E;
-}
-else {
-    biologyUnit = courseUnits.biology * gradePoints.F;
-}
-
-let workshopUnit = courses.workshop;
-
-if(courses.workshop === "A") {
-    workshopUnit = courseUnits.workshop * gradePoints.A;
-}
-else if(courses.workshop === "B") {
-    workshopUnit = courseUnits.workshop * gradePoints.B;
-}
-else if(courses.workshop === "C") {
-    workshopUnit = courseUnits.workshop * gradePoints.C;
-}
-else if(courses.workshop === "D") {
-    workshopUnit = courseUnits.workshop * gradePoints.D;
-}
-else if (courses.workshop === "E") {
-    workshopUnit = courseUnits.workshop * gradePoints.E;
-}
-else {
-    workshopUnit = courseUnits.workshop * gradePoints.F;
-}
-
-let technicalDrawingUnit = courses.technicalDrawing;
-
-if(courses.technicalDrawing === "A") {
-    technicalDrawingUnit = courseUnits.technicalDrawing * gradePoints.A;
-}
-else if(courses.technicalDrawing === "B") {
-    technicalDrawingUnit = courseUnits.technicalDrawing * gradePoints.B;
-}
-else if(courses.technicalDrawing === "C") {
-    technicalDrawingUnit = courseUnits.technicalDrawing * gradePoints.C;
-}
-else if(courses.technicalDrawing === "D") {
-    technicalDrawingUnit = courseUnits.technicalDrawing * gradePoints.D;
-}
-else if(courses.technicalDrawing === "E") {
-    technicalDrawingUnit = courseUnits.technicalDrawing * gradePoints.E;
-}
-else {
-    technicalDrawingUnit = courseUnits.technicalDrawing * gradePoints.F;
-}
-
-let humanitiesUnit = courses.humanities;
-
-if(courses.humanities === "A") {
-    humanitiesUnit = courseUnits.humanities * gradePoints.A;
-}
-else if(courses.humanities === "B") {
-    humanitiesUnit = courseUnits.humanities * gradePoints.B;
-}
-else if(courses.humanities === "C") {
-    humanitiesUnit = courseUnits.humanities * gradePoints.C;
-}
-else if(courses.humanities === "D") {
-    humanitiesUnit = courseUnits.humanities * gradePoints.D;
-}
-else if(courses.humanities === "E") {
-    humanitiesUnit = courseUnits.humanities * gradePoints.E;
-}
-else {
-    humanitiesUnit = courseUnits.humanities * gradePoints.F;
-}
-
 let sumOfPoint = englishUnit + frenchUnit + mathematicsUnit + physicsUnit + chemistryUnit + biologyUnit + workshopUnit + technicalDrawingUnit + humanitiesUnit;
 
  let gpa = sumOfPoint / totalUnit;
 
  document.write(gpa);
-
